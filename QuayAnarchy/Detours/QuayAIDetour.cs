@@ -22,9 +22,9 @@ namespace QuayAnarchy.Detours
                 }
                 else
                 {
-                    float num = instance1.m_nodes.m_buffer[(int)startPoint.m_node].m_position.y;
-                    startPoint.m_elevation = num - startPoint.m_position.y;
-                    startPoint.m_position.y = num;
+                    float y = instance1.m_nodes.m_buffer[(int)startPoint.m_node].m_position.y;
+                    startPoint.m_elevation = y - startPoint.m_position.y;
+                    startPoint.m_position.y = y;
                     if (instance1.m_nodes.m_buffer[(int)startPoint.m_node].CountSegments() > 1)
                         toolErrors |= ToolBase.ToolErrors.InvalidShape;
                 }
@@ -35,9 +35,9 @@ namespace QuayAnarchy.Detours
             }
             else
             {
-                float a = startPoint.m_position.y;
+                float y = startPoint.m_position.y;
                 Vector3 vector3 = new Vector3(middlePoint.m_direction.z, 0.0f, -middlePoint.m_direction.x);
-                float num = Mathf.Max(Mathf.Max(a, Singleton<TerrainManager>.instance.SampleRawHeightSmooth(startPoint.m_position + vector3 * (this.m_info.m_halfWidth + 8f))), Singleton<TerrainManager>.instance.SampleRawHeightSmooth(startPoint.m_position - vector3 * (this.m_info.m_halfWidth + 8f)));
+                float num = Mathf.Max(Mathf.Max(y, Singleton<TerrainManager>.instance.SampleRawHeightSmooth(startPoint.m_position + vector3 * (this.m_info.m_halfWidth + 8f))), Singleton<TerrainManager>.instance.SampleRawHeightSmooth(startPoint.m_position - vector3 * (this.m_info.m_halfWidth + 8f)));
                 startPoint.m_elevation = num - startPoint.m_position.y;
                 startPoint.m_position.y = num;
             }
@@ -49,9 +49,9 @@ namespace QuayAnarchy.Detours
                 }
                 else
                 {
-                    float num = instance1.m_nodes.m_buffer[(int)endPoint.m_node].m_position.y;
-                    endPoint.m_elevation = num - endPoint.m_position.y;
-                    endPoint.m_position.y = num;
+                    float y = instance1.m_nodes.m_buffer[(int)endPoint.m_node].m_position.y;
+                    endPoint.m_elevation = y - endPoint.m_position.y;
+                    endPoint.m_position.y = y;
                     if (instance1.m_nodes.m_buffer[(int)endPoint.m_node].CountSegments() > 1)
                         toolErrors |= ToolBase.ToolErrors.InvalidShape;
                 }
@@ -62,9 +62,9 @@ namespace QuayAnarchy.Detours
             }
             else
             {
-                float a = endPoint.m_position.y;
+                float y = endPoint.m_position.y;
                 Vector3 vector3 = new Vector3(endPoint.m_direction.z, 0.0f, -endPoint.m_direction.x);
-                float num = Mathf.Max(Mathf.Max(a, Singleton<TerrainManager>.instance.SampleRawHeightSmooth(endPoint.m_position + vector3 * (this.m_info.m_halfWidth + 8f))), Singleton<TerrainManager>.instance.SampleRawHeightSmooth(endPoint.m_position - vector3 * (this.m_info.m_halfWidth + 8f)));
+                float num = Mathf.Max(Mathf.Max(y, Singleton<TerrainManager>.instance.SampleRawHeightSmooth(endPoint.m_position + vector3 * (this.m_info.m_halfWidth + 8f))), Singleton<TerrainManager>.instance.SampleRawHeightSmooth(endPoint.m_position - vector3 * (this.m_info.m_halfWidth + 8f)));
                 endPoint.m_elevation = num - endPoint.m_position.y;
                 endPoint.m_position.y = num;
             }
@@ -84,10 +84,8 @@ namespace QuayAnarchy.Detours
             segment1.a = bezier2.a + vector2_1 * this.m_info.m_halfWidth;
             Segment2 segment2;
             segment2.a = bezier2.a - vector2_1 * this.m_info.m_halfWidth;
-            bool flag1 = false;
-            bool flag2 = false;
-            bool flag3 = false;
-            bool flag4 = false;
+            //begin mod
+            //end mod
             for (int index = 1; index <= num1; ++index)
             {
                 Vector2 vector2_2 = bezier2.Position((float)index / (float)num1);
@@ -102,7 +100,6 @@ namespace QuayAnarchy.Detours
             }
             //begin mod
             //end mod
-
             return toolErrors;
         }
 
