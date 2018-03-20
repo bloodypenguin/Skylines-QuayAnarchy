@@ -16,18 +16,28 @@ namespace QuayAnarchy.Detours
             TerrainManager instance2 = Singleton<TerrainManager>.instance;
             if ((int)startPoint.m_node != 0)
             {
-                if (instance1.m_nodes.m_buffer[(int)startPoint.m_node].Info.m_class.m_level != this.m_info.m_class.m_level)
+                NetInfo info = instance1.m_nodes.m_buffer[(int)startPoint.m_node].Info;
+                if (info.m_class.m_subService != this.m_info.m_class.m_subService || info.m_class.m_level != this.m_info.m_class.m_level)
                     toolErrors |= ToolBase.ToolErrors.InvalidShape;
             }
-            else if ((int)startPoint.m_segment != 0 && instance1.m_segments.m_buffer[(int)startPoint.m_segment].Info.m_class.m_level != this.m_info.m_class.m_level)
-                toolErrors |= ToolBase.ToolErrors.InvalidShape;
+            else if ((int)startPoint.m_segment != 0)
+            {
+                NetInfo info = instance1.m_segments.m_buffer[(int)startPoint.m_segment].Info;
+                if (info.m_class.m_subService != this.m_info.m_class.m_subService || info.m_class.m_level != this.m_info.m_class.m_level)
+                    toolErrors |= ToolBase.ToolErrors.InvalidShape;
+            }
             if ((int)endPoint.m_node != 0)
             {
-                if (instance1.m_nodes.m_buffer[(int)endPoint.m_node].Info.m_class.m_level != this.m_info.m_class.m_level)
+                NetInfo info = instance1.m_nodes.m_buffer[(int)endPoint.m_node].Info;
+                if (info.m_class.m_subService != this.m_info.m_class.m_subService || info.m_class.m_level != this.m_info.m_class.m_level)
                     toolErrors |= ToolBase.ToolErrors.InvalidShape;
             }
-            else if ((int)endPoint.m_segment != 0 && instance1.m_segments.m_buffer[(int)endPoint.m_segment].Info.m_class.m_level != this.m_info.m_class.m_level)
-                toolErrors |= ToolBase.ToolErrors.InvalidShape;
+            else if ((int)endPoint.m_segment != 0)
+            {
+                NetInfo info = instance1.m_segments.m_buffer[(int)endPoint.m_segment].Info;
+                if (info.m_class.m_subService != this.m_info.m_class.m_subService || info.m_class.m_level != this.m_info.m_class.m_level)
+                    toolErrors |= ToolBase.ToolErrors.InvalidShape;
+            }
             Vector3 middlePos1;
             Vector3 middlePos2;
             NetSegment.CalculateMiddlePoints(startPoint.m_position, middlePoint.m_direction, endPoint.m_position, -endPoint.m_direction, true, true, out middlePos1, out middlePos2);

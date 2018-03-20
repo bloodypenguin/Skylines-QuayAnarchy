@@ -16,7 +16,8 @@ namespace QuayAnarchy.Detours
             TerrainManager instance2 = Singleton<TerrainManager>.instance;
             if ((int)startPoint.m_node != 0)
             {
-                if (instance1.m_nodes.m_buffer[(int)startPoint.m_node].Info.m_class.m_level != this.m_info.m_class.m_level)
+                NetInfo info = instance1.m_nodes.m_buffer[(int)startPoint.m_node].Info;
+                if (info.m_class.m_subService != this.m_info.m_class.m_subService || info.m_class.m_level != this.m_info.m_class.m_level)
                 {
                     toolErrors |= ToolBase.ToolErrors.InvalidShape;
                 }
@@ -43,7 +44,8 @@ namespace QuayAnarchy.Detours
             }
             if ((int)endPoint.m_node != 0)
             {
-                if (instance1.m_nodes.m_buffer[(int)endPoint.m_node].Info.m_class.m_level != this.m_info.m_class.m_level)
+                NetInfo info = instance1.m_nodes.m_buffer[(int)endPoint.m_node].Info;
+                if (info.m_class.m_subService != this.m_info.m_class.m_subService || info.m_class.m_level != this.m_info.m_class.m_level)
                 {
                     toolErrors |= ToolBase.ToolErrors.InvalidShape;
                 }
