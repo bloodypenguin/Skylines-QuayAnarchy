@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Detours\CargoHarborAIDetour.cs" />
+    <Compile Include="Detours\FishingHarborAIDetour.cs" />
     <Compile Include="Detours\FloodWallAIDetour.cs" />
     <Compile Include="Detours\HarborAIDetour.cs" />
     <Compile Include="Detours\QuayAIDetour.cs" />

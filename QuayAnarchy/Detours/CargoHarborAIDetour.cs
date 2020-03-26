@@ -32,7 +32,7 @@ namespace QuayAnarchy.Detours
             Vector3 position2 = position1;
             uint laneID;
             byte offset;
-            if (ShipDockAI.FindConnectionPath(ref position2, out laneID, out offset))
+            if (ShipDockAI.FindConnectionPath(ref position2, out laneID, out offset, false))
             {
                 position1.y = position2.y;
                 connectionSegment.a = position1;
